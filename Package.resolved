@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "YTPageController",
+        "repositoryURL": "https://github.com/iWECon/YTPageController",
+        "state": {
+          "branch": null,
+          "revision": "31e7ccfa4f200443b1bfa274aa647dae5122145f",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
