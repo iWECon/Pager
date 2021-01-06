@@ -5,7 +5,7 @@ import YTPageController
 open class Pager: PageController, PageControllerDelegate, TopScrollable, Refreshable {
     
     weak public var pagerDelegate: PageControllerDelegate?
-    override public var delegate: PageControllerDelegate? {
+    override open var delegate: PageControllerDelegate? {
         get {
             self
         }
@@ -14,7 +14,7 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
         }
     }
     
-    private var collectionView: UICollectionView? {
+    public var collectionView: UICollectionView? {
         value(forKey: "_collectionView") as? UICollectionView
     }
     
@@ -28,7 +28,7 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
         super.delegate = self
     }
     
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let vc = self.currentViewController, vc.parent == nil {
             let _ = vc.view
@@ -38,13 +38,13 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
         }
     }
     
-    public func scrollToTop() {
+    open func scrollToTop() {
         if let current = self.currentViewController as? TopScrollable {
             current.scrollToTop()
         }
     }
     
-    public func beginRefreshing() {
+    open func beginRefreshing() {
         if let current = self.currentViewController as? Refreshable {
             current.beginRefreshing()
         }
@@ -59,7 +59,7 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
     }
     
     @discardableResult
-    public func moveTo(_ viewController: UIViewController) -> Self {
+    open func moveTo(_ viewController: UIViewController) -> Self {
         willMove(toParent: viewController)
         viewController.addChild(self)
         viewController.view.addSubview(view)
