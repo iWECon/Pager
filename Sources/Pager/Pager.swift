@@ -50,15 +50,15 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
         }
     }
     
-    public func pageController(_ pageController: PageController, willStartTransition context: PageTransitionContext) {
+    open func pageController(_ pageController: PageController, willStartTransition context: PageTransitionContext) {
         pagerDelegate?.pageController?(pageController, willStartTransition: context)
     }
     
-    public func pageController(_ pageController: PageController, didEndTransition context: PageTransitionContext) {
+    open func pageController(_ pageController: PageController, didEndTransition context: PageTransitionContext) {
         pagerDelegate?.pageController?(pageController, didEndTransition: context)
     }
     
-    public func pageController(_ pageController: PageController, didUpdateTransition context: PageTransitionContext) {
+    open func pageController(_ pageController: PageController, didUpdateTransition context: PageTransitionContext) {
         pagerDelegate?.pageController?(pageController, didUpdateTransition: context)
     }
     
