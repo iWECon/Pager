@@ -68,11 +68,15 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
         willMove(toParent: viewController)
         viewController.addChild(self)
         if let pagable = viewController as? Pagable {
-            if let pvp = pagable.pagerCollectionViewProvider {
-                self.collectionViewProvider = pvp
+            if let pvlp = pagable.pagerCollectionViewLayout {
+                self.collectionViewLayoutProvider = { () -> UICollectionViewFlowLayout in
+                    pvlp
+                }
             }
-            if let pvlp = pagable.pagerCollectionViewLayoutProvider {
-                self.collectionViewLayoutProvider = pvlp
+            if let pvp = pagable.pagerCollectionView {
+                self.collectionViewProvider = { (rect, layout) -> UICollectionView in
+                    pvp(rect, layout)
+                }
             }
         }
         viewController.view.addSubview(view)
