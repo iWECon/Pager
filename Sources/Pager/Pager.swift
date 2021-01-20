@@ -74,9 +74,7 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
                 }
             }
             if let pvp = pagable.pagerCollectionView {
-                self.collectionViewProvider = { (rect, layout) -> UICollectionView in
-                    pvp(rect, layout)
-                }
+                self.collectionViewProvider = pvp
             }
         }
         viewController.view.addSubview(view)

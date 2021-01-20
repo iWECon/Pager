@@ -20,7 +20,7 @@ public protocol Pagable: Refreshable, TopScrollable {
 
 public extension Pagable where Self: UIViewController {
     
-    var pagerCollectionViewProvider: PagerCollectionViewProvider? {
+    var pagerCollectionView: PagerCollectionViewProvider? {
         nil
     }
     
