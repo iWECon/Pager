@@ -4,8 +4,8 @@
 
 import UIKit
 
-struct PagableKeys {
-    static var pagerKey = "PagableKeys.pagerKey"
+public struct PagableKeys {
+    public static var pagerKey = "PagableKeys.pagerKey"
 }
 
 public typealias PagerCollectionViewProvider = (_: CGRect, _: UICollectionViewLayout) -> UICollectionView
