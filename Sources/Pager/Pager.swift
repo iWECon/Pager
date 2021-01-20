@@ -42,6 +42,7 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
         if let current = self.currentViewController as? TopScrollable {
             current.scrollToTop()
         }
+        
     }
     
     open func beginRefreshing() {
@@ -66,6 +67,14 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
     open func moveTo(_ viewController: UIViewController) -> Self {
         willMove(toParent: viewController)
         viewController.addChild(self)
+        if let pagable = viewController as? Pagable {
+            if let pvp = pagable.pagerCollectionViewProvider {
+                self.collectionViewProvider = pvp
+            }
+            if let pvlp = pagable.pagerCollectionViewLayoutProvider {
+                self.collectionViewLayoutProvider = pvlp
+            }
+        }
         viewController.view.addSubview(view)
         view.frame = viewController.view.bounds
         didMove(toParent: viewController)
