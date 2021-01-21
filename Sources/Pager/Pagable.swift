@@ -10,7 +10,7 @@ public struct PagableKeys {
 
 public typealias PagerCollectionViewProvider = (_: CGRect, _: UICollectionViewLayout) -> UICollectionView
 
-public protocol Pagable: Refreshable, TopScrollable {
+public protocol Pagable {
     
     var pagerCollectionView: PagerCollectionViewProvider? { get }
     var pagerCollectionViewLayout: UICollectionViewFlowLayout? { get }

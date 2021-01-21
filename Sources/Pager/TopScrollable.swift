@@ -8,9 +8,12 @@ public protocol TopScrollable {
     func scrollToTop()
 }
 
-public extension TopScrollable where Self: Pagable {
+public extension TopScrollable where Self: Pager {
     
     func scrollToTop() {
-        pager.scrollToTop()
+        guard let current = self.currentViewController as? TopScrollable else {
+            return
+        }
+        current.scrollToTop()
     }
 }
