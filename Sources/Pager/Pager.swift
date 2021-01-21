@@ -38,6 +38,20 @@ open class Pager: PageController, PageControllerDelegate, TopScrollable, Refresh
         }
     }
     
+    open func scrollToTop() {
+        guard let current = self.currentViewController as? TopScrollable else {
+            return
+        }
+        current.scrollToTop()
+    }
+    
+    open func beginRefreshing() {
+        guard let current = self.currentViewController as? Refreshable else {
+            return
+        }
+        current.beginRefreshing()
+    }
+    
     open func pageController(_ pageController: PageController, willStartTransition context: PageTransitionContext) {
         pagerDelegate?.pageController?(pageController, willStartTransition: context)
     }

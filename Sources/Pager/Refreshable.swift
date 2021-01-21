@@ -8,13 +8,10 @@ public protocol Refreshable {
     func beginRefreshing()
 }
 
-public extension Refreshable where Self: Pager {
+public extension Refreshable where Self: Pagable {
     
     func beginRefreshing() {
-        guard let current = self.currentViewController as? Refreshable else {
-            return
-        }
-        current.beginRefreshing()
+        pager.beginRefreshing()
     }
     
 }
